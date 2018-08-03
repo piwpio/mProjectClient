@@ -1,0 +1,23 @@
+{
+  "name": "mprojectclient",
+  "version": "1.0.0",
+  "description": "client for mproject",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piwpio/mProjectClient.git"
+  },
+  "keywords": [
+    "mproject",
+    "client"
+  ],
+  "author": "Piotr Piwowar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piwpio/mProjectClient/issues"
+  },
+  "homepage": "https://github.com/piwpio/mProjectClient#readme"
+}
