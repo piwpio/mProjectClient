@@ -14,10 +14,9 @@
     "mproject",
     "client"
   ],
-  "author": "Piotr Piwowar",
+  "author": "PiotrPiwowar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/piwpio/mProjectClient/issues"
-  },
-  "homepage": "https://github.com/piwpio/mProjectClient#readme"
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
