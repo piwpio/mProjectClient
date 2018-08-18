@@ -2,7 +2,7 @@
   "name": "mprojectclient",
   "version": "1.0.0",
   "description": "client for mproject",
-  "main": "index.js",
+  "main": "client.js",
   "scripts": {
     "test": "test"
   },
