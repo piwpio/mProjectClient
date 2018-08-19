@@ -11,10 +11,13 @@ Loading.prototype.show = function()
     this.$bottom.removeClass('loading-hide');
 };
 
-Loading.prototype.hide = function()
+Loading.prototype.hide = function(delay)
 {
-    // this.$top.velocity({top: '-50%'}, {duration: 500});
-    // this.$bottom.velocity({bottom: '-50%'}, {duration: 500});
-    this.$top.addClass('loading-hide');
-    this.$bottom.addClass('loading-hide');
+    let self = this;
+    setTimeout(function() {
+        // this.$top.velocity({top: '-50%'}, {duration: 500});
+        // this.$bottom.velocity({bottom: '-50%'}, {duration: 500});
+        self.$top.addClass('loading-hide');
+        self.$bottom.addClass('loading-hide');
+    }, delay);
 };
