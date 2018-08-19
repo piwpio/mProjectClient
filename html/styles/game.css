@@ -1,0 +1,80 @@
+#game-container {
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+#game-container #game-locations-container,
+#game-container #game-ui-container {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+/*region LOCATIONS*/
+#game-container #game-locations-container > div {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+}
+#game-container #game-locations-container #game-location-1 {
+    left:-100%;
+    background:lightblue;
+}
+#game-container #game-locations-container #game-location-2 {
+    left:0;
+    background:lightpink;
+}
+#game-container #game-locations-container #game-location-3 {
+    left:100%;
+    background:lightgreen;
+}
+/*endregion LOCATIONS*/
+
+/*region UI*/
+#game-container #game-ui-container #game-stats {
+    position:relative;
+    width:100%;
+    height:50px;
+    background:yellow;
+}
+#game-container #game-ui-container #game-button-east,
+#game-container #game-ui-container #game-button-west {
+    position:absolute;
+    top:50%;
+    margin-top:-50px;
+    width:50px;
+    height:100px;
+    background:lightgray;
+}
+#game-container #game-ui-container #game-button-east {
+    left:0;
+}
+#game-container #game-ui-container #game-button-east.move-button-active,
+#game-container #game-ui-container #game-button-west.move-button-active {
+    background: yellow;
+}
+
+#game-container #game-ui-container #game-button-west {
+    right:0;
+}
+
+#game-container #game-ui-container #game-options-left,
+#game-container #game-ui-container #game-options-right {
+    position:absolute;
+    bottom:-50px;
+    width:100px;
+    height:100px;
+    background:yellow;
+    border-radius:100%;
+}
+#game-container #game-ui-container #game-options-left {
+    left:-50px;
+}
+#game-container #game-ui-container #game-options-right {
+    right:-50px;
+}
+/*endregion UI*/

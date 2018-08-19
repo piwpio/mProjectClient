@@ -1,0 +1,23 @@
+#loading-top,
+#loading-bottom {
+    z-index:100;
+    position:absolute;
+    left:0;
+    width:100%;
+    height:50%;
+    background:black
+}
+#loading-top {
+    top:0;
+    transition: top 0.5s ease;
+}
+#loading-bottom {
+    bottom: 0;
+    transition: bottom 0.5s ease;
+}
+#loading-top.loading-hide {
+    top: -50%;
+}
+#loading-bottom.loading-hide {
+    bottom: -50%;
+}
