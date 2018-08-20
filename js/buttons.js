@@ -1,9 +1,10 @@
-MoveButton = function($id, emitAction) {
+MoveButton = function($id, emitAction)
+{
     let $this = $($id);
     let isActive = $this.hasClass('move-button-active');
     $this.on('click', function() {
         if (isActive) {
-            window.debugMessage(emitAction);
+            window.debugConsole(emitAction);
             window.socket.emit(emitAction);
         }
     });

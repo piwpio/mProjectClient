@@ -1,4 +1,5 @@
-Game = function() {
+Game = function()
+{
     this.init();
 };
 
