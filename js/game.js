@@ -8,6 +8,7 @@ Game.prototype.init = function()
     let self = this;
     this.createView()
         .done(function() {
+            self.statsBar = new StatsBar();
             self.buttonEast = new MoveButton('#game-button-east', 'move_east');
             self.buttonWest = new MoveButton('#game-button-west', 'move_west');
         });
@@ -20,10 +21,4 @@ Game.prototype.createView = function()
         def.resolve();
     });
     return def;
-};
-
-Game.prototype.bindEvents = function()
-{
-    $('#game-button-east').on('click', function() {
-    });
 };

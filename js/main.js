@@ -1,13 +1,18 @@
 $(function()
 {
+    window.debugError = function(m) {console.error(m)};
     window.debugConsole = function(m) {console.info(m)};
-    // window.debug.info = function(m) {};
+    // window.debugError = function(m) {};
+    // window.debugConsole = function(m) {};
+
 
     window.$body = $('#main-container');
     window.loading = new Loading();
     window.gg = new Game();
-    window.socket = io('localhost:3600');
+    window.hh = new Hero();
+    window.ll = new Locations();
     window.ss = new ServicesController();
+    window.socket = io('localhost:3600');
 
     //init connection
     window.socket.on('checksum', function(code) {

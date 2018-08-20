@@ -41,6 +41,15 @@
     height:50px;
     background:yellow;
 }
+#game-container #game-ui-container #game-stats-bar #stats-bar-location {
+    width: 50px;
+    height: 100%;
+    background: lightsalmon;
+    color:black;
+    font-weight: bolder;
+}
+
+
 #game-container #game-ui-container #game-button-east,
 #game-container #game-ui-container #game-button-west {
     position:absolute;
@@ -53,14 +62,14 @@
 #game-container #game-ui-container #game-button-east {
     left:0;
 }
+#game-container #game-ui-container #game-button-west {
+    right:0;
+}
 #game-container #game-ui-container #game-button-east.move-button-active,
 #game-container #game-ui-container #game-button-west.move-button-active {
     background: yellow;
 }
 
-#game-container #game-ui-container #game-button-west {
-    right:0;
-}
 
 #game-container #game-ui-container #game-options-left,
 #game-container #game-ui-container #game-options-right {

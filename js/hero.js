@@ -12,22 +12,19 @@ Hero = function()
     this._weight = null;
 };
 
-Hero.prototype.initHero = function()
+Hero.prototype.setField = function(field, v)
 {
-
-};
-
-Hero.prototype.setField = function(field, val)
-{
-    this[field] = val;
-    if (this['render' + field] !== undefined) {
-
+    if (this[field] !== undefined) {
+        this[field] = v;
+        this.render(field, v)
+    } else {
+        window.debugError('Hero have not field like ' + field);
     }
 };
 
-Hero.prototype.render = function(field)
+Hero.prototype.render = function(field, v)
 {
     if (field === '_location') {
-
+        window.ll.render(v)
     }
 };
