@@ -26,5 +26,7 @@ Hero.prototype.render = function(field, v)
 {
     if (field === '_location') {
         window.ll.render(v)
+    } else if (field === '_hp') {
+        window.gg.statsBar.renderHp(v)
     }
 };

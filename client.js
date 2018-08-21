@@ -1,7 +1,7 @@
 let express = require("express");
 let app = express();
 let server = require("http").Server(app);
-console.log("SERVER STARTED");
+console.log("CLIENT STARTED");
 
 //game
 app.use(express.static(__dirname));
@@ -10,3 +10,4 @@ app.get('/', function(req, res) {
 });
 
 server.listen(3000);
+console.log("CLIENT LISTENING");
