@@ -9,8 +9,6 @@ $(function()
     window.$body = $('#main-container');
     window.loading = new Loading();
     window.gg = new Game();
-    window.hh = new Hero();
-    window.ll = new Locations();
     window.ss = new ServicesController();
     window.socket = io('localhost:3600');
 

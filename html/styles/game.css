@@ -69,10 +69,10 @@
     background:lightgray;
 }
 #game-container #game-ui-container #game-button-east {
-    left:0;
+    right:0;
 }
 #game-container #game-ui-container #game-button-west {
-    right:0;
+    left:0;
 }
 #game-container #game-ui-container #game-button-east.move-button-active,
 #game-container #game-ui-container #game-button-west.move-button-active {
