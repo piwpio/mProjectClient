@@ -1,6 +1,5 @@
 Locations = function()
 {
-
     this.$container1 = $('#game-location-1');
     this.$container2 = $('#game-location-2');
     this.$container3 = $('#game-location-3');
@@ -13,11 +12,21 @@ Locations = function()
     this.currentLocationContainerNo = 2;
 };
 
-Locations.prototype.render = function(locationId)
+Locations.prototype.render = function(locationId, heroes, enemies)
 {
     window.gg.statsBar.renderLocation(locationId);
     let location = window.ss.staticData().getStaticData()['locations'][locationId] || {};
     if (location) {
+        //NOTE set heroes on location
+        if (heroes) {
+            window.debugConsole(heroes);
+        }
+
+        //NOTE set enemies on location
+        if (enemies) {
+            window.debugConsole(enemies);
+        }
+
         if (this.currentLocationId === null) {
             this.initLocation(2, locationId);
         }
@@ -79,6 +88,10 @@ Locations.prototype.render = function(locationId)
 Locations.prototype.getContainer = function(containerNo)
 {
     return this['$container' + containerNo];
+};
+
+Locations.prototype.setField = function(key, data) {
+
 };
 
 Locations.prototype.initLocation = function(containerNo, locationId)

@@ -34,6 +34,7 @@ function startGame()
 {
     HeroResponse();
     LocationResponse();
+    NewLocationResponse();
     ChatResponse();
     errorResponse();
     window.socket.emit('init_hero');
