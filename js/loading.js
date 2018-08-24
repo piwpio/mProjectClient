@@ -1,4 +1,5 @@
-Loading = function() {
+Loading = function()
+{
     this.$top = $('#loading-top');
     this.$bottom = $('#loading-bottom');
 };
