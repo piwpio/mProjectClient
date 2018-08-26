@@ -13,6 +13,7 @@ Game.prototype.init = function()
             self.statsBar = new StatsBar();
             self.buttonEast = new MoveButton('#game-button-east', 'move_east');
             self.buttonWest = new MoveButton('#game-button-west', 'move_west');
+            self.chat = new Chat();
         });
 };
 

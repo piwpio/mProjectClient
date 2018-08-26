@@ -59,6 +59,19 @@
 }
 
 
+#game-container #game-ui-container #game-button-chat {
+    position:absolute;
+    right:0;
+    top:50%;
+    margin-top:60px;
+    width:50px;
+    height:50px;
+    background:lightgoldenrodyellow;
+}
+#game-container #game-ui-container #game-button-chat.new-message {
+    background:gold;
+}
+
 #game-container #game-ui-container #game-button-east,
 #game-container #game-ui-container #game-button-west {
     position:absolute;
@@ -96,3 +109,54 @@
     right:-50px;
 }
 /*endregion UI*/
+
+/*region CHAT*/
+#game-container #game-chat-container {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 70%;
+    height:100%;
+    transition: left 0.2s linear;
+    background:lightslategray;
+}
+#game-container #game-chat-container.chat-hidden {
+    left:-70%;
+}
+#game-container #game-chat-container #chat-messages {
+    position: relative;
+    width:100%;
+    height: calc(100% - 30px);
+    background:white;
+}
+#game-container #game-chat-container .chat-message {
+    position: relative;
+    width:100%;
+    background:lightyellow;
+    border-bottom: 1px black solid;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#game-container #game-chat-container #chat-input-container {
+    position: relative;
+    height: 30px;
+}
+#game-container #game-chat-container #chat-input {
+    position: relative;
+    display:inline-block;
+    width: 80%;
+    height:30px;
+    box-sizing: border-box;
+}
+#game-container #game-chat-container #chat-send-button {
+    position: relative;
+    display:inline-block;
+    width: 20%;
+    height:30px;
+    box-sizing: border-box;
+    text-align: center;
+    background: cornflowerblue;
+    vertical-align: top;
+    padding-top:6px;
+}
+/*endregion CHAT*/
