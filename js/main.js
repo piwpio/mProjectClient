@@ -11,6 +11,7 @@ $(function()
     window.gg = new Game();
     window.ss = new ServicesController();
     window.socket = io('localhost:3600');
+    // window.socket = io('192.168.0.192:3600');
 
     //init connection
     window.socket.on('checksum', function(code) {

@@ -5,6 +5,7 @@ Chat = function()
     this.$button = $('#game-button-chat');
     this.$buttonSend = $('#chat-send-button');
     this.$input = $('#chat-input');
+    this.$form = $('#chat-form');
 
     this.isVisible = false;
     this.isButtonMarkedNewMessage = false;
@@ -22,13 +23,18 @@ Chat.prototype.init = function()
             self.show()
         }
     });
+    this.$form.on('submit', function(e) {
+        e.preventDefault();
+        let message = self.$input.val();
+        if (message && message.length) {
+            window.socket.emit('chat_message', {m: message});
+            self.addMessage('me',0,message);
+            self.$input.val('');
+        }
+        return false;
+    });
     this.$buttonSend.on('click', function() {
-       let message = self.$input.val();
-       if (message && message.length) {
-           window.socket.emit('chat_message', {m: message});
-           self.addMessage('me',0,message);
-           self.$input.val('');
-       }
+        self.$form.trigger('submit');
     });
 };
 

@@ -3,6 +3,15 @@ StatsBar = function()
     this.$this = $('#game-stats-bar');
     this.$location = $('#stats-bar-location');
     this.$hp = $('#stats-bar-hp');
+
+    this.init();
+};
+
+StatsBar.prototype.init = function()
+{
+    // this.$hp.on('click', function() {
+    //     document.body.webkitRequestFullScreen();
+    // });
 };
 
 StatsBar.prototype.renderLocation = function(location)
