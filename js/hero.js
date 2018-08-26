@@ -26,5 +26,7 @@ Hero.prototype.render = function(field, v)
 {
     if (field === '_hp') {
         window.gg.statsBar.renderHp(v)
+    } else if (field === '_exp') {
+        window.gg.statsBar.renderExp(v)
     }
 };

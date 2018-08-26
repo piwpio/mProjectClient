@@ -3,6 +3,7 @@ StatsBar = function()
     this.$this = $('#game-stats-bar');
     this.$location = $('#stats-bar-location');
     this.$hp = $('#stats-bar-hp');
+    this.$exp = $('#stats-bar-exp');
 
     this.init();
 };
@@ -22,5 +23,10 @@ StatsBar.prototype.renderLocation = function(location)
 StatsBar.prototype.renderHp = function(hp)
 {
     this.$hp.text('HP:' + hp);
+};
+
+StatsBar.prototype.renderExp = function(exp)
+{
+    this.$exp.text('EXP:' + exp);
 };
 

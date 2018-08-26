@@ -84,6 +84,15 @@ Locations.prototype.render = function(locationId, heroes, enemies)
         }
     }
 };
+Locations.prototype.addEnemy = function(enemy)
+{
+
+};
+
+Locations.prototype.addHero = function(hero)
+{
+
+};
 
 Locations.prototype.getContainer = function(containerNo)
 {
