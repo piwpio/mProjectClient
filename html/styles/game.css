@@ -70,7 +70,6 @@
     width:20%;
     height:100%;
     box-sizing:border-box;
-    border:1px dashed black;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div .enemy {
     position: absolute;
@@ -96,11 +95,23 @@
     justify-content: center;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div {
+    position:relative;
     width:9%;
     height:100%;
     box-sizing:border-box;
-    border:1px dashed black;
 }
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div .hero {
+    position: absolute;
+    left:50%;
+    width:40px;
+    height:100%;
+    margin-left:-20px;
+    background: navy;
+    color:white;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
 /*endregion LOCATIONS*/
 
 /*region UI*/

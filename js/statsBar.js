@@ -27,7 +27,6 @@ StatsBar.prototype.renderHp = function(hp)
 
 StatsBar.prototype.renderExp = function(exp)
 {
-    console.log(exp);
     this.$exp.text('EXP:' + exp);
 };
 

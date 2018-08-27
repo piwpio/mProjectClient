@@ -51,9 +51,14 @@ Locations.prototype.render = function(locationId, heroes, enemies)
     if (location) {
         if (this.currentLocationId === null) {
             this.initSideLocation(2, locationId);
+            this.cleanEnemiesAndHeroes(this.currentLocationContainerNo);
+            if (heroes) {
+                for (let i = 0; i < heroes.length; i++) {
+                    this.addHero(heroes[i], this.currentLocationContainerNo);
+                }
+            }
             if (enemies) {
                 for (let i = 0; i < enemies.length; i++) {
-                    this.cleanEnemiesAndHeroes(this.currentLocationContainerNo);
                     this.addEnemy(enemies[i], this.currentLocationContainerNo);
                 }
             }
@@ -65,7 +70,9 @@ Locations.prototype.render = function(locationId, heroes, enemies)
         if (locationId === this.westLocationId) {
             this.cleanEnemiesAndHeroes(this.westLocationContainerNo);
             if (heroes) {
-
+                for (let i = 0; i < heroes.length; i++) {
+                    this.addHero(heroes[i], this.westLocationContainerNo);
+                }
             }
             if (enemies) {
                 for (let i = 0; i < enemies.length; i++) {
@@ -86,7 +93,9 @@ Locations.prototype.render = function(locationId, heroes, enemies)
         } else if (locationId === this.eastLocationId) {
             this.cleanEnemiesAndHeroes(this.eastLocationContainerNo);
             if (heroes) {
-
+                for (let i = 0; i < heroes.length; i++) {
+                    this.addHero(heroes[i], this.eastLocationContainerNo);
+                }
             }
             if (enemies) {
                 for (let i = 0; i < enemies.length; i++) {
@@ -134,17 +143,47 @@ Locations.prototype.render = function(locationId, heroes, enemies)
 
 Locations.prototype.addEnemy = function(enemy, containerNo)
 {
-    let tpl = '<div><div class="enemy enemy-' + enemy.base + '" data-enemy-id="' + enemy.id + '">' + enemy.name + '</div></div>';
+    let tpl =
+        '<div id="' + enemy.id + '-enemy">' +
+        '<div class="enemy enemy-' + enemy.base + '" data-enemy-id="' + enemy.id + '">' + enemy.name + ' (' + enemy.id + ')</div>' +
+        '</div>';
     this.getContainerElements(containerNo)['$enemiesContainer'].append(tpl);
 };
 
-Locations.prototype.addHero = function(hero)
+Locations.prototype.addEnemyDynamic = function(data)
 {
+    this.addEnemy(data.enemy, this.currentLocationContainerNo)
+};
 
+Locations.prototype.removeEnemyDynamic = function(data)
+{
+    $('#' + data.id + '-enemy', this.getContainer(this.currentLocationContainerNo)).remove();
+};
+
+Locations.prototype.addHero = function(hero, containerNo)
+{
+    let tpl =
+        '<div id="' + hero.id + '-hero">' +
+        '<div class="hero" data-hero-id="' + hero.id + '">' + hero.name + ' (' + hero.id + ')</div>' +
+        '</div>';
+    console.log('111');
+    this.getContainerElements(containerNo)['$heroesContainer'].append(tpl);
+};
+
+Locations.prototype.addHeroDynamic = function(data)
+{
+    this.addHero(data.hero, this.currentLocationContainerNo)
+};
+
+Locations.prototype.removeHeroDynamic = function(data)
+{
+    console.log('123123');
+    $('#' + data.id + '-hero', this.getContainer(this.currentLocationContainerNo)).remove();
 };
 
 Locations.prototype.cleanEnemiesAndHeroes = function(containerNo)
 {
+    console.log('9999');
     this.getContainerElements(containerNo)['$enemiesContainer'].empty();
     this.getContainerElements(containerNo)['$heroesContainer'].empty();
 };
