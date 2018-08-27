@@ -134,10 +134,8 @@ Locations.prototype.render = function(locationId, heroes, enemies)
 
 Locations.prototype.addEnemy = function(enemy, containerNo)
 {
-    let position = Math.floor((Math.random() * 5) + 1);
-    let tpl = '<div class="enemy enemy-' + enemy.base + '" data-enemy-id="' + enemy.id + '">' + enemy.name + '</div>';
-    this.enemiesSlotsOnLocations[containerNo].push(position);
-    $('.enemy-slot-' + position, this.getContainerElements(containerNo)['$enemiesContainer']).append(tpl);
+    let tpl = '<div><div class="enemy enemy-' + enemy.base + '" data-enemy-id="' + enemy.id + '">' + enemy.name + '</div></div>';
+    this.getContainerElements(containerNo)['$enemiesContainer'].append(tpl);
 };
 
 Locations.prototype.addHero = function(hero)
@@ -147,20 +145,8 @@ Locations.prototype.addHero = function(hero)
 
 Locations.prototype.cleanEnemiesAndHeroes = function(containerNo)
 {
-    let $enemiesContainer = this.getContainerElements(containerNo)['$enemiesContainer'];
-    for (let i = 0; i < this.enemiesSlotsOnLocations[containerNo].length; i++) {
-        let position = this.enemiesSlotsOnLocations[containerNo][i];
-        $('.enemy-slot-' + position, $enemiesContainer).empty();
-    }
-    this.enemiesSlotsOnLocations[containerNo] = [];
-
-
-    let $heroesContainer = this.getContainerElements(containerNo)['$heroesContainer'];
-    for (let i = 0; i < this.heroesSlotsOnLocations[containerNo].length; i++) {
-        let position = this.heroesSlotsOnLocations[containerNo][i];
-        $('.hero-slot-' + position, $heroesContainer).empty();
-    }
-    this.heroesSlotsOnLocations[containerNo] = [];
+    this.getContainerElements(containerNo)['$enemiesContainer'].empty();
+    this.getContainerElements(containerNo)['$heroesContainer'].empty();
 };
 
 Locations.prototype.getContainer = function(containerNo)

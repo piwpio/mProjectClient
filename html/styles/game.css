@@ -62,17 +62,15 @@
     height:30%;
     box-sizing:border-box;
     border-bottom:1px dashed black;
+    display:flex;
+    justify-content: center;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div {
     position:relative;
-    float:left;
     width:20%;
     height:100%;
     box-sizing:border-box;
-    border-right:1px dashed black;
-}
-#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div:last-child {
-    border-right:none;
+    border:1px dashed black;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div .enemy {
     position: absolute;
@@ -94,16 +92,14 @@
     height:40%;
     box-sizing:border-box;
     border-bottom:1px dashed black;
+    display:flex;
+    justify-content: center;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div {
-    float:left;
     width:9%;
     height:100%;
     box-sizing:border-box;
-    border-right:1px dashed black;
-}
-#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div:last-child {
-    border-right:none;
+    border:1px dashed black;
 }
 /*endregion LOCATIONS*/
 
