@@ -12,6 +12,12 @@
     left:0;
     right:0;
 }
+#game-container #game-ui-container {
+    pointer-events:none;
+}
+#game-container #game-ui-container div {
+    pointer-events: auto;
+}
 
 /*region LOCATIONS*/
 #game-container #game-locations-container > div {
@@ -58,6 +64,7 @@
     border-bottom:1px dashed black;
 }
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div {
+    position:relative;
     float:left;
     width:20%;
     height:100%;
@@ -67,6 +74,20 @@
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div:last-child {
     border-right:none;
 }
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div .enemy {
+    position: absolute;
+    bottom: 20px;
+    left:50%;
+}
+
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div .enemy-wolf {
+    width:80px;
+    height:50px;
+    margin-left:-40px;
+    background: lightslategray;
+    color:black;
+}
+
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container {
     position:relative;
     width:100%;

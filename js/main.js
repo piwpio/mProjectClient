@@ -1,11 +1,5 @@
 $(function()
 {
-    window.debugError = function(m) {console.error(m)};
-    window.debugConsole = function(m) {console.info(m)};
-    // window.debugError = function(m) {};
-    // window.debugConsole = function(m) {};
-
-
     window.$body = $('#main-container');
     window.loading = new Loading();
     window.gg = new Game();
