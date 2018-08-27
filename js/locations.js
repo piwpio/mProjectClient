@@ -3,6 +3,24 @@ Locations = function()
     this.$container1 = $('#game-location-1');
     this.$container2 = $('#game-location-2');
     this.$container3 = $('#game-location-3');
+    this.$container1Elements = {
+        $background: $('.location-background',this.$container1),
+        $floor: $('.location-floor',this.$container1),
+        $enemiesContainer: $('.location-floor .location-floor-enemies',this.$container1),
+        $heroesContainer: $('.location-floor .location-floor-heroes',this.$container1),
+    };
+    this.$container2Elements = {
+        $background: $('.location-background',this.$container2),
+        $floor: $('.location-floor',this.$container2),
+        $enemiesContainer: $('.location-floor .location-floor-enemies',this.$container2),
+        $heroesContainer: $('.location-floor .location-floor-heroes',this.$container2),
+    };
+    this.$container3Elements = {
+        $background: $('.location-background',this.$container3),
+        $floor: $('.location-floor',this.$container3),
+        $enemiesContainer: $('.location-floor .location-floor-enemies',this.$container3),
+        $heroesContainer: $('.location-floor .location-floor-heroes',this.$container3),
+    };
 
     this.currentLocationId = null;
     this.westLocationId = null;

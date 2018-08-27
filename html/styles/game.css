@@ -32,6 +32,58 @@
     left:100%;
     background:lightgreen;
 }
+
+#game-container #game-locations-container .location-background {
+    position:relative;
+    width:100%;
+    height:45%;
+    background:forestgreen;
+}
+#game-container #game-locations-container .location-floor {
+    position:relative;
+    background:lightgreen;
+    width:100%;
+    height:55%;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper {
+    position:relative;
+    width:calc(100% - 100px);
+    height:100%;
+    margin-left:50px;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container {
+    width:100%;
+    height:30%;
+    box-sizing:border-box;
+    border-bottom:1px dashed black;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div {
+    float:left;
+    width:20%;
+    height:100%;
+    box-sizing:border-box;
+    border-right:1px dashed black;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div:last-child {
+    border-right:none;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container {
+    position:relative;
+    width:100%;
+    height:40%;
+    box-sizing:border-box;
+    border-bottom:1px dashed black;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div {
+    float:left;
+    width:9%;
+    height:100%;
+    box-sizing:border-box;
+    border-right:1px dashed black;
+}
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-heroes-container > div:last-child {
+    border-right:none;
+}
 /*endregion LOCATIONS*/
 
 /*region UI*/
