@@ -71,6 +71,9 @@
     height:100%;
     box-sizing:border-box;
 }
+#game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div.enemy-dead > div {
+    transform: rotate(180deg);
+}
 #game-container #game-locations-container .location-floor .location-floor-wrapper .location-floor-enemies-container > div .enemy {
     position: absolute;
     bottom: 20px;

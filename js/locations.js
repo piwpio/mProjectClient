@@ -141,6 +141,21 @@ Locations.prototype.render = function(locationId, heroes, enemies)
     }
 };
 
+Locations.prototype.setEnemy = function(enemyId, data)
+{
+    let $enemy = $('#' + enemyId + '-enemy', this.getContainer(this.currentLocationContainerNo));
+    for (let field in data) {
+        let v = data[field];
+        if (field === '_alive') {
+            if (!v) {
+                $enemy.addClass('enemy-dead');
+            } else {
+                $enemy.removeClass('enemy-dead');
+            }
+        }
+    }
+};
+
 Locations.prototype.addEnemy = function(enemy, containerNo)
 {
     let tpl =
@@ -166,7 +181,6 @@ Locations.prototype.addHero = function(hero, containerNo)
         '<div id="' + hero.id + '-hero">' +
         '<div class="hero" data-hero-id="' + hero.id + '">' + hero.name + ' (' + hero.id + ')</div>' +
         '</div>';
-    console.log('111');
     this.getContainerElements(containerNo)['$heroesContainer'].append(tpl);
 };
 
@@ -177,13 +191,11 @@ Locations.prototype.addHeroDynamic = function(data)
 
 Locations.prototype.removeHeroDynamic = function(data)
 {
-    console.log('123123');
     $('#' + data.id + '-hero', this.getContainer(this.currentLocationContainerNo)).remove();
 };
 
 Locations.prototype.cleanEnemiesAndHeroes = function(containerNo)
 {
-    console.log('9999');
     this.getContainerElements(containerNo)['$enemiesContainer'].empty();
     this.getContainerElements(containerNo)['$heroesContainer'].empty();
 };

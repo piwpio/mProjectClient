@@ -5,8 +5,6 @@ LocationResponse = function()
             if (response.hasOwnProperty(key)) {
                 if (response.hasOwnProperty(key)) {
                     let data = response[key];
-                    console.log(key);
-                    console.log(data);
                     if (key === 'enemy_remove') {
                         window.ll.removeEnemyDynamic(data);
                     } else if (key === 'enemy_add') {
@@ -15,6 +13,10 @@ LocationResponse = function()
                         window.ll.removeHeroDynamic(data);
                     } else if (key === 'hero_add') {
                         window.ll.addHeroDynamic(data);
+                    } else if (key === 'enemy') {
+                        for (let enemyId in data) {
+                            window.ll.setEnemy(parseInt(enemyId), data[enemyId]);
+                        }
                     } else {
                         window.ll.setField(key, data);
                     }
