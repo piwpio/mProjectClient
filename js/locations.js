@@ -152,6 +152,16 @@ Locations.prototype.setEnemy = function(enemyId, data)
             } else {
                 $enemy.removeClass('enemy-dead');
             }
+        } else if (field === 'attacked_by') {
+            if (v !== window.hh.getId()) {
+                let $hero = $('#' + v + '-hero', this.getContainer(this.currentLocationContainerNo));
+            }
+            console.log(field, v, 'attacked by');
+        } else if (field === 'attack_hero') {
+            if (v !== window.hh.getId()) {
+                let $hero = $('#' + v + '-hero', this.getContainer(this.currentLocationContainerNo));
+            }
+            console.log(field, v, 'attack hero');
         }
     }
 };
@@ -207,6 +217,11 @@ Locations.prototype.getContainer = function(containerNo)
 Locations.prototype.getContainerElements = function(containerNo)
 {
     return this['container' + containerNo + 'Elements'];
+};
+
+Locations.prototype.get$HeroById = function()
+{
+
 };
 
 Locations.prototype.setField = function(key, data) {

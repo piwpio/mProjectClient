@@ -30,3 +30,8 @@ Hero.prototype.render = function(field, v)
         window.gg.statsBar.renderExp(v)
     }
 };
+
+Hero.prototype.getId = function()
+{
+    return this._id;
+};
