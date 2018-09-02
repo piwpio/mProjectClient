@@ -33,6 +33,7 @@ Locations = function()
     this.currentLocationContainerNo = 2;
 
     this._fightAnimationQueue = [];
+    this._deadLocation = window.ss.staticData().getStaticData()['dead_location_id'];
 
     this.initEvents();
 };
@@ -64,6 +65,7 @@ Locations.prototype.render = function(locationId, heroes, enemies)
     if (location) {
         this.clearFightAnimationsQueue();
 
+        //NOTE on hero init set location
         if (this.currentLocationId === null) {
             this.initSideLocation(2, locationId);
             this.cleanEnemiesAndHeroes(this.currentLocationContainerNo);
@@ -80,7 +82,7 @@ Locations.prototype.render = function(locationId, heroes, enemies)
         }
         this.currentLocationId = locationId;
 
-        //NOTE animation
+        //NOTE if not init
         let moveDirection = null;
         if (locationId === this.westLocationId) {
             this.cleanEnemiesAndHeroes(this.westLocationContainerNo);
@@ -95,6 +97,7 @@ Locations.prototype.render = function(locationId, heroes, enemies)
                 }
             }
 
+            //NOTE animation
             this.getContainer(this.westLocationContainerNo).velocity({left: '0'}, {easing: 'linear', duration: 300});
             this.getContainer(this.currentLocationContainerNo).velocity({left: '100%'}, {easing: 'linear', duration: 300});
             this.getContainer(this.eastLocationContainerNo).css('left', '-100%');
@@ -126,6 +129,13 @@ Locations.prototype.render = function(locationId, heroes, enemies)
             this.eastLocationContainerNo = this.westLocationContainerNo;
             this.westLocationContainerNo = tmp;
             moveDirection = 'east';
+        } else if (locationId === this._deadLocation) {
+            let self = this;
+            window.loading.show();
+            setTimeout(function() {
+                self.cleanEnemiesAndHeroes(self.currentLocationContainerNo);
+                window.loading.hide();
+            }, 600);
         }
 
         //NOTE init of neighbour locations if can go there
