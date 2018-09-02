@@ -10,9 +10,9 @@ StatsBar = function()
 
 StatsBar.prototype.init = function()
 {
-    // this.$hp.on('click', function() {
-    //     document.body.webkitRequestFullScreen();
-    // });
+    this.$hp.on('click', function() {
+        document.body.webkitRequestFullScreen();
+    });
 };
 
 StatsBar.prototype.renderLocation = function(location)

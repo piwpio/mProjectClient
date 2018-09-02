@@ -1,5 +1,6 @@
 Hero = function()
 {
+    this._id = null;
     this._location = null;
     this._name = null;
     this._level = null;
@@ -18,7 +19,7 @@ Hero.prototype.setField = function(field, v)
         this[field] = v;
         this.render(field, v)
     } else {
-        window.debugError('Hero have not field like ' + field);
+        console.error('Hero have not field like ' + field);
     }
 };
 

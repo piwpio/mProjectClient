@@ -32,6 +32,8 @@ Locations = function()
     this.eastLocationContainerNo = 3;
     this.currentLocationContainerNo = 2;
 
+    this._fightAnimationQueue = [];
+
     this.initEvents();
 };
 
@@ -40,8 +42,19 @@ Locations.prototype.initEvents = function()
     //NOTE attack enemy
     $(document).on('click', '.enemy', function(){
         let $enemy = $(this);
-        window.socket.emit('fight_attack', {eid: $enemy.data('enemy-id'), et: 'e'})
+        if (!$enemy.hasClass('enemy-dead')) {
+            window.socket.emit('fight_attack', {eid: $enemy.data('enemy-id'), et: 'e'})
+        }
     });
+};
+
+Locations.prototype.setField = function(key, data) {
+
+};
+
+Locations.prototype.initSideLocation = function(containerNo, locationId)
+{
+
 };
 
 Locations.prototype.render = function(locationId, heroes, enemies)
@@ -49,6 +62,8 @@ Locations.prototype.render = function(locationId, heroes, enemies)
     window.gg.statsBar.renderLocation(locationId);
     let location = window.ss.staticData().getStaticData()['locations'][locationId] || {};
     if (location) {
+        this.clearFightAnimationsQueue();
+
         if (this.currentLocationId === null) {
             this.initSideLocation(2, locationId);
             this.cleanEnemiesAndHeroes(this.currentLocationContainerNo);
@@ -145,23 +160,30 @@ Locations.prototype.setEnemy = function(enemyId, data)
 {
     let $enemy = $('#' + enemyId + '-enemy', this.getContainer(this.currentLocationContainerNo));
     for (let field in data) {
-        let v = data[field];
         if (field === '_alive') {
-            if (!v) {
+            let isAlive = data[field];
+            if (!isAlive) {
                 $enemy.addClass('enemy-dead');
             } else {
                 $enemy.removeClass('enemy-dead');
             }
         } else if (field === 'attacked_by') {
-            if (v !== window.hh.getId()) {
-                let $hero = $('#' + v + '-hero', this.getContainer(this.currentLocationContainerNo));
+            let attackingHeroId = data[field];
+            let $hero;
+            if (attackingHeroId !== window.hh.getId()) {
+                $hero = this.get$HeroByIdOcCurrentLocation(attackingHeroId);
             }
-            console.log(field, v, 'attacked by');
+            this.addToFightAnimationQueue(true, $hero, $enemy);
+            this.fightAnimation();
+
         } else if (field === 'attack_hero') {
-            if (v !== window.hh.getId()) {
-                let $hero = $('#' + v + '-hero', this.getContainer(this.currentLocationContainerNo));
+            let attackedHeroId = data[field];
+            let $hero;
+            if (attackedHeroId !== window.hh.getId()) {
+                $hero = this.get$HeroByIdOcCurrentLocation(attackedHeroId);
             }
-            console.log(field, v, 'attack hero');
+            this.addToFightAnimationQueue(false, $hero, $enemy);
+            this.fightAnimation();
         }
     }
 };
@@ -219,16 +241,42 @@ Locations.prototype.getContainerElements = function(containerNo)
     return this['container' + containerNo + 'Elements'];
 };
 
-Locations.prototype.get$HeroById = function()
+Locations.prototype.get$HeroByIdOcCurrentLocation = function(heroId)
 {
-
+    return $('#' + heroId + '-hero', this.getContainer(this.currentLocationContainerNo))
 };
 
-Locations.prototype.setField = function(key, data) {
-
-};
-
-Locations.prototype.initSideLocation = function(containerNo, locationId)
+Locations.prototype.addToFightAnimationQueue = function(isHeroAttack, $hero, $enemy)
 {
+    this._fightAnimationQueue.push([isHeroAttack, $hero, $enemy]);
+};
+Locations.prototype.clearFightAnimationsQueue = function()
+{
+    this._fightAnimationQueue = [];
+};
+Locations.prototype._fightAnimationReady = true;
+Locations.prototype.fightAnimation = function()
+{
+    if (this._fightAnimationReady && this._fightAnimationQueue.length) {
+        let self = this;
+        this._fightAnimationReady = false;
+        let pair = this._fightAnimationQueue.shift();
 
+        let isHeroAttack = pair[0];
+        let $hero = pair[1];
+        let $enemy = pair[2];
+        let topPx = '20px';
+        if (isHeroAttack) {
+            topPx = '-' + topPx
+        }
+
+        if ($hero) {
+            $hero
+                .velocity({top: topPx}, {easing: 'linear', duration: 100})
+                .velocity({top: '0'}, {easing: 'linear', duration: 100});
+        }
+        $enemy
+            .velocity({top: topPx}, {easing: 'linear', duration: 100})
+            .velocity({top: '0'}, {easing: 'linear', duration: 100, complete: function(){self._fightAnimationReady = true; self.fightAnimation();}});
+    }
 };

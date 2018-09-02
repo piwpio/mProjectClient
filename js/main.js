@@ -16,7 +16,7 @@ $(function()
             });
             window.socket.emit('static_data');
         } else {
-            startGame()
+            startGame();
         }
     });
     window.socket.on('connected', function() {
